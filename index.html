@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="ms" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#063b69">
+<meta name="description" content="Temerloh Physiotherapy Centre — pusat rawatan fisioterapi dan rehabilitasi.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/logo.png">
+<title>Selamat Datang | TPC</title>
+<script>
+(() => {
+  try {
+    const theme = sessionStorage.getItem('tpcTheme');
+    if (theme === 'dark' || theme === 'light') document.documentElement.dataset.theme = theme;
+  } catch(e) {}
+})();
+</script>
+<style>
+:root{
+  --navy:#063b69; --blue:#137fc2; --sky:#eaf7ff; --ice:#f6fbff;
+  --ink:#163247; --muted:#5c7182; --white:#fff; --line:#d9e8f2;
+  --shadow:0 18px 45px rgba(6,59,105,.12); --radius:22px;
+  --header-bg:rgba(255,255,255,.92); --card-bg:#fff;
+  --hero-a:#fff; --hero-b:#f5fbff; --hero-c:#dff2ff;
+}
+html[data-theme="dark"]{
+  --navy:#d6a93a; --blue:#e0b84f; --sky:#3b111b; --ice:#17090d;
+  --ink:#f6ead0; --muted:#c8bba8; --white:#0b0809; --line:#4b2930;
+  --shadow:0 18px 45px rgba(0,0,0,.42); --header-bg:rgba(11,8,9,.92);
+  --card-bg:#120c0e; --hero-a:#0b0809; --hero-b:#16090d; --hero-c:#3a101b;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:auto;scrollbar-gutter:stable}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--white);line-height:1.7;transition:background-color .28s,color .28s}
+body.loading{overflow:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font:inherit}
+.container{width:min(1120px,calc(100% - 40px));margin:auto}
+.site-header{position:sticky;top:0;z-index:50;background:var(--header-bg);backdrop-filter:blur(16px);border-bottom:1px solid color-mix(in srgb,var(--line) 70%,transparent);transition:background .28s,border-color .28s}
+.navbar{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--navy);letter-spacing:.2px;border:0;background:transparent;padding:0;margin:0;appearance:none;-webkit-appearance:none;cursor:pointer}
+.brand img{width:48px;height:48px;object-fit:cover;border-radius:12px}
+.brand span{font-size:15px;line-height:1.15}
+.nav-links{display:flex;align-items:center;gap:7px}
+.nav-links a{padding:9px 13px;border-radius:12px;color:var(--muted);font-size:14px;font-weight:650;transition:.2s}
+.nav-links a:hover,.nav-links a.active{background:var(--sky);color:var(--navy)}
+.nav-actions{display:flex;align-items:center;gap:9px}
+.theme-toggle{position:relative;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card-bg);color:var(--navy);padding:9px 12px;border-radius:999px;cursor:pointer;font-size:13px;font-weight:800;box-shadow:0 8px 22px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s,background .25s}
+.theme-toggle:hover{transform:translateY(-2px) rotate(-1deg);box-shadow:0 12px 28px rgba(0,0,0,.12)}
+.theme-toggle:active{transform:scale(.94)}
+.theme-icon{display:grid;place-items:center;width:25px;height:25px;border-radius:50%;background:var(--sky);transition:transform .45s}
+.theme-toggle:hover .theme-icon{transform:rotate(25deg) scale(1.08)}
+.theme-label{white-space:nowrap}
+.menu-btn{display:none;border:0;background:var(--sky);color:var(--navy);width:44px;height:44px;border-radius:12px;cursor:pointer}
+.view{display:none}
+.view.active{display:block}
+.view.not-found{display:none}
+.view.not-found.active{display:grid}
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--hero-a) 0%,var(--hero-b) 55%,var(--hero-c) 100%);min-height:calc(100vh - 76px);display:flex;align-items:center}
+.hero:before{content:"";position:absolute;inset:0;background:url("assets/logo.png") center/520px no-repeat;opacity:.055;filter:saturate(.8);transition:filter .35s,opacity .35s}
+html[data-theme="dark"] .hero:before{opacity:.12;filter:grayscale(1) sepia(1) saturate(5) hue-rotate(325deg) brightness(.9)}
+.hero:after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;right:-140px;top:-140px;background:rgba(19,127,194,.11);filter:blur(3px)}
+html[data-theme="dark"] .hero:after{background:rgba(166,24,55,.2)}
+.hero-content{position:relative;z-index:1;max-width:720px;padding:90px 0}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--blue);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px}
+.eyebrow:before{content:"";width:28px;height:2px;background:var(--blue)}
+h1{font-size:clamp(42px,6vw,72px);line-height:1.03;letter-spacing:-2px;margin:18px 0;color:var(--navy)}
+.hero p{font-size:18px;color:var(--muted);max-width:650px;margin:0 0 30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 20px;border-radius:14px;border:1px solid transparent;background:var(--navy);color:var(--white);font-weight:750;box-shadow:0 10px 24px rgba(6,59,105,.18);transition:.2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.secondary{background:var(--card-bg);color:var(--navy);border-color:var(--line);box-shadow:none}
+.section{padding:88px 0}
+.section.soft{background:var(--ice)}
+.section-head{max-width:760px;margin-bottom:38px}
+.section-head h2{font-size:clamp(30px,4vw,46px);line-height:1.1;margin:10px 0;color:var(--navy);letter-spacing:-1px}
+.section-head p{color:var(--muted);margin:0}
+.kicker{font-size:13px;font-weight:800;color:var(--blue);text-transform:uppercase;letter-spacing:1.4px}
+.grid{display:grid;gap:22px}
+.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:var(--card-bg);border:1px solid var(--line);border-radius:var(--radius);padding:26px;box-shadow:0 10px 30px rgba(6,59,105,.06);transition:background .28s,border-color .28s,color .28s}
+.card h3{margin:0 0 9px;color:var(--navy);font-size:21px}
+.card p{margin:0;color:var(--muted)}
+.icon{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;background:var(--sky);color:var(--navy);font-weight:900;margin-bottom:17px}
+.about-intro{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:stretch}
+.quote{background:linear-gradient(145deg,#063b69,#0b6aa8);color:#fff;border-radius:var(--radius);padding:34px;box-shadow:var(--shadow)}
+html[data-theme="dark"] .quote{background:linear-gradient(145deg,#3b0b17,#120a0d);color:#f7e6bf;border:1px solid #6c3b25}
+.quote p{color:rgba(255,255,255,.86);font-size:18px}
+.quote strong{display:block;margin-top:18px}
+.timeline{position:relative;margin-top:25px;padding-left:28px}
+.timeline:before{content:"";position:absolute;left:7px;top:5px;bottom:5px;width:2px;background:var(--line)}
+.timeline-item{position:relative;padding:0 0 30px}
+.timeline-item:before{content:"";position:absolute;left:-27px;top:7px;width:12px;height:12px;background:var(--blue);border:3px solid var(--white);box-shadow:0 0 0 2px var(--line);border-radius:50%}
+.timeline-item .date{font-weight:850;color:var(--blue);font-size:13px}
+.timeline-item h3{margin:3px 0 4px;color:var(--navy)}
+.timeline-item p{margin:0;color:var(--muted)}
+.list{margin:0;padding-left:20px;color:var(--muted)}
+.list li{margin:7px 0}
+.team-card{display:grid;grid-template-columns:110px 1fr;gap:20px;align-items:center}
+.team-photo{width:110px;height:110px;border-radius:18px;object-fit:cover;background:var(--sky);border:1px solid var(--line)}
+.small{font-size:13px;color:var(--muted)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.gallery-item{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:18px;border:1px solid var(--line);cursor:pointer;background:#eef7fb}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:.35s}
+.gallery-item:hover img{transform:scale(1.05)}
+.gallery-item .tag{position:absolute;left:12px;bottom:12px;padding:5px 9px;background:rgba(255,255,255,.9);border-radius:999px;font-size:12px;font-weight:750;color:#063b69}
+.modal{position:fixed;inset:0;background:rgba(2,20,34,.88);z-index:100;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.modal-inner{position:relative;width:min(1050px,100%);display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px}
+.modal img{max-height:82vh;width:100%;object-fit:contain;border-radius:16px}
+.modal-close,.modal-prev,.modal-next{border:0;background:rgba(255,255,255,.14);color:white;width:46px;height:46px;border-radius:50%;cursor:pointer;font-size:24px;backdrop-filter:blur(8px);transition:transform .2s,background .2s}
+.modal-close:hover,.modal-prev:hover,.modal-next:hover{transform:scale(1.06);background:rgba(255,255,255,.22)}
+.modal-close{position:absolute;right:10px;top:10px;z-index:2}
+.modal-nav{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 10px;pointer-events:none}
+.modal-nav button{pointer-events:auto}
+.price-layout{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.price-image{border-radius:20px;border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+.price-list{display:grid;gap:15px}
+.price-row{display:flex;justify-content:space-between;gap:20px;align-items:center;background:var(--card-bg);border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+.price-row strong{color:var(--navy);font-size:18px}
+.price{font-weight:900;color:var(--blue);font-size:22px;white-space:nowrap}
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.contact-card{position:relative;cursor:pointer;min-height:240px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s}
+.contact-card:hover{transform:translateY(-5px);box-shadow:0 18px 42px rgba(6,59,105,.15);border-color:color-mix(in srgb,var(--blue) 45%,var(--line))}
+html[data-theme="dark"] .contact-card:hover{box-shadow:0 18px 42px rgba(0,0,0,.5);border-color:#9c6f28}
+.contact-card:active{transform:translateY(-1px) scale(.995)}
+.contact-card .hint{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--blue);font-weight:850}
+.contact-card .arrow{position:absolute;right:22px;top:22px;width:38px;height:38px;border-radius:50%;background:var(--sky);display:grid;place-items:center;color:var(--navy);transition:transform .25s}
+.contact-card:hover .arrow{transform:translate(2px,-2px) rotate(8deg)}
+.contact-details{display:none}
+.contact-modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(2,8,14,.72);backdrop-filter:blur(8px)}
+.contact-modal.open{display:flex;animation:fadeIn .2s ease}
+.member-dialog{position:relative;width:min(620px,100%);max-height:min(720px,92vh);overflow:auto;background:var(--card-bg);border:1px solid var(--line);border-radius:28px;box-shadow:0 30px 80px rgba(0,0,0,.28);padding:30px;animation:memberIn .28s cubic-bezier(.2,.8,.2,1)}
+.member-dialog-head{display:flex;gap:20px;align-items:center;padding-right:40px}
+.member-dialog-head .team-photo{width:120px;height:120px;border-radius:24px}
+.member-role{margin:3px 0 0;color:var(--blue)!important;font-weight:800}
+.member-close{position:absolute;right:18px;top:18px;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:var(--sky);color:var(--navy);font-size:25px;line-height:1;cursor:pointer;transition:transform .2s,background .2s}
+.member-close:hover{transform:rotate(90deg) scale(1.06)}
+.member-info{margin-top:25px;padding-top:22px;border-top:1px dashed var(--line)}
+.member-info p{color:var(--muted)}
+.wa-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px 18px;border-radius:15px;background:#25D366;color:#fff!important;font-weight:900;border:0;box-shadow:0 10px 25px rgba(37,211,102,.24);transition:transform .2s,box-shadow .2s,filter .2s}
+.wa-btn:hover{transform:translateY(-3px);box-shadow:0 16px 30px rgba(37,211,102,.32);filter:saturate(1.08)}
+.wa-btn:active{transform:scale(.97)}
+.cta{padding:36px;border-radius:var(--radius);background:linear-gradient(135deg,var(--sky),var(--card-bg));border:1px solid var(--line)}
+.site-footer{background:#062f53;color:#d9edf9;padding:28px 0}
+html[data-theme="dark"] .site-footer{background:#050304;color:#d8c59e;border-top:1px solid #3e2229}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:center;font-size:13px}
+.footer-inner .signature{text-align:right;color:#9ec6dc}
+html[data-theme="dark"] .footer-inner .signature{color:#bda86f}
+.footer-inner strong{color:white}
+html[data-theme="dark"] .footer-inner strong{color:#e2bb50}
+.page-hero{background:linear-gradient(135deg,var(--hero-a),var(--hero-b));padding:78px 0 62px;position:relative;overflow:hidden}
+.page-hero:after{content:"";position:absolute;right:-100px;top:-160px;width:380px;height:380px;border-radius:50%;background:rgba(19,127,194,.1)}
+html[data-theme="dark"] .page-hero:after{background:rgba(139,18,47,.22)}
+.page-hero .container{position:relative;z-index:1}
+.page-hero h1{font-size:clamp(40px,6vw,62px);margin:10px 0}
+.page-hero p{max-width:760px;color:var(--muted);font-size:17px}
+.install-card{position:fixed;z-index:80;left:14px;right:14px;bottom:14px;background:var(--card-bg);border:1px solid var(--line);border-radius:20px;box-shadow:0 20px 50px rgba(6,59,105,.2);padding:17px;display:none;gap:13px;align-items:flex-start}
+.install-card.show{display:flex}
+.install-card img{width:44px;height:44px;border-radius:11px}
+.install-card .content{flex:1}
+.install-card h4{margin:0;color:var(--navy);font-size:15px}
+.install-card p{margin:3px 0 10px;color:var(--muted);font-size:12px;line-height:1.45}
+.install-actions{display:flex;gap:7px}
+.install-actions button{border:0;border-radius:10px;padding:8px 11px;font-size:12px;font-weight:800;cursor:pointer;background:var(--navy);color:var(--white)}
+.install-actions .dismiss{background:var(--sky);color:var(--navy)}
+.loader{position:fixed;inset:0;z-index:1000;background:linear-gradient(145deg,var(--hero-a),var(--hero-b),var(--hero-c));display:flex;align-items:center;justify-content:center;transition:opacity .45s,visibility .45s}
+.loader:before{content:"";position:absolute;inset:0;background:url("assets/logo.png") center/430px no-repeat;opacity:.045;pointer-events:none}
+html[data-theme="dark"] .loader:before{opacity:.12;filter:grayscale(1) sepia(1) saturate(5) hue-rotate(325deg) brightness(.9)}
+.loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.loader-inner{text-align:center;width:min(360px,80vw);position:relative;z-index:1}
+.loader-logo{width:90px;height:90px;border-radius:23px;object-fit:cover;margin:0 auto 20px;box-shadow:0 15px 40px rgba(6,59,105,.15);animation:float 1.7s ease-in-out infinite}
+.loader-ring{width:42px;height:42px;border:3px solid var(--line);border-top-color:var(--blue);border-radius:50%;margin:0 auto 16px;animation:spin 1s linear infinite}
+.loader h2{margin:0;color:var(--navy);font-size:17px}
+.loader p{margin:5px 0 0;color:var(--muted);font-size:12px}
+.loader-note{margin-top:30px!important;font-size:11px!important;line-height:1.55}
+.not-found{min-height:calc(100vh - 76px - 90px);display:grid;place-items:center;text-align:center;padding:70px 0}
+.not-found .code{font-size:clamp(90px,20vw,180px);line-height:.8;font-weight:950;color:var(--navy);letter-spacing:-10px}
+.not-found h1{font-size:36px;letter-spacing:-1px;margin:28px 0 8px}
+.not-found p{color:var(--muted);margin:0 auto 24px;max-width:550px}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes float{50%{transform:translateY(-5px)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes memberIn{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+@media(max-width:850px){
+ .nav-actions{margin-left:auto}
+ .nav-links{display:none;position:absolute;top:76px;left:0;right:0;background:var(--card-bg);border-bottom:1px solid var(--line);padding:10px 20px 18px;flex-direction:column;align-items:stretch;box-shadow:0 15px 30px rgba(6,59,105,.08)}
+ .nav-links.open{display:flex}.nav-links a{padding:12px 14px}.menu-btn{display:block}
+ .about-intro,.price-layout{grid-template-columns:1fr}.three{grid-template-columns:1fr 1fr}
+ .gallery-grid{grid-template-columns:1fr 1fr}
+ .theme-label{display:none}.theme-toggle{padding:7px}
+}
+@media(max-width:600px){
+ .container{width:min(100% - 28px,1120px)}
+ .navbar{min-height:68px}.brand img{width:42px;height:42px}.brand span{font-size:13px}.menu-btn{width:42px;height:42px}
+ .nav-links{top:68px}
+ .hero{min-height:calc(100svh - 68px)}.hero-content{padding:70px 0}.hero p{font-size:16px}
+ .section{padding:64px 0}.two,.three,.contact-grid{grid-template-columns:1fr}
+ .gallery-grid{grid-template-columns:1fr 1fr;gap:10px}.gallery-item{border-radius:13px}
+ .team-card{grid-template-columns:82px 1fr}.team-photo{width:82px;height:82px}
+ .footer-inner{flex-direction:column;align-items:flex-start}.footer-inner .signature{text-align:left}
+ .price-row{align-items:flex-start;flex-direction:column;gap:5px}.price{font-size:20px}
+ .modal{padding:10px}.modal img{max-height:75vh}
+ .member-dialog{padding:24px 20px;border-radius:23px}.member-dialog-head{gap:14px}.member-dialog-head .team-photo{width:88px;height:88px;border-radius:18px}
+}
+</style>
+</head>
+<body data-page="home" class="loading">
+
+<div class="loader" aria-label="Memuatkan laman">
+  <div class="loader-inner">
+    <img class="loader-logo" src="assets/logo.png" alt="TPC">
+    <div class="loader-ring"></div>
+    <h2>Connecting to TPC</h2>
+    <p>Sedang menyediakan pengalaman laman web…</p>
+    <p class="loader-note">Sekiranya website tidak dapat dijana atau mengalami masalah seperti bug/error code/unavailable, pengguna boleh contact <strong>011-3187 6685 (Hariz)</strong>.</p>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container navbar">
+    <button class="brand" type="button" data-route="home" data-route-home aria-label="Kembali ke halaman utama">
+      <img src="assets/logo.png" alt="TPC Logo">
+      <span>Temerloh<br>Physiotherapy Centre</span>
+    </button>
+    <div class="nav-actions">
+      <button class="theme-toggle" type="button" aria-label="Tukar ke mod gelap" aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">☾</span><span class="theme-label">Dark</span>
+      </button>
+      <button class="menu-btn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#about" data-route="about">About Us</a>
+      <a href="#gallery" data-route="gallery">Gallery</a>
+      <a href="#pricing" data-route="pricing">Pricing</a>
+      <a href="#contact" data-route="contact">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<div id="site-main">
+<main class="view" data-view="home">
+<section class="hero"><div class="container hero-content">
+<div class="eyebrow">Temerloh • Pahang</div>
+<h1>Selamat datang ke Temerloh Physiotherapy Centre.</h1>
+<p>Pusat rawatan fisioterapi dan rehabilitasi yang menumpukan pemulihan fungsi pergerakan, pengurusan kesakitan serta pengalaman rawatan yang selesa dan selamat.</p>
+<a class="btn" data-view-link="about" href="#about">Ketahui lanjut <span>→</span></a>
+</div></section>
+<section class="section soft"><div class="container"><div class="section-head"><div class="kicker">Tentang TPC</div><h2>Rawatan yang berfokus kepada pemulihan.</h2><p>TPC diasaskan pada 3 Mei 2016 dan beroperasi di Temerloh, Pahang. Fokus perkhidmatan merangkumi fisioterapi, rehabilitasi dan beberapa bentuk rawatan khusus.</p></div>
+<div class="grid three">
+<article class="card"><div class="icon">01</div><h3>Fisioterapi</h3><p>Terapeutic exercise, pain management, electrical modalities, tapping dan pengurusan kecederaan sukan.</p></article>
+<article class="card"><div class="icon">02</div><h3>Rehabilitasi</h3><p>Skop termasuk neurologi, musculoskeletal, gait training, hand rehabilitation dan pemulihan selepas kecederaan atau pembedahan.</p></article>
+<article class="card"><div class="icon">03</div><h3>Home Visit</h3><p>Perkhidmatan home visit disediakan bagi pesakit yang memerlukan rawatan di rumah.</p></article>
+</div></div></section>
+<section class="section"><div class="container"><div class="cta"><div class="section-head" style="margin-bottom:18px"><div class="kicker">Teruskan</div><h2>Kenali sejarah, perkhidmatan dan pasukan TPC.</h2><p>Semak profil organisasi, galeri, harga pakej dan maklumat untuk dihubungi.</p></div><a class="btn" data-view-link="about" href="#about">Explore About Us →</a></div></div></section>
+</main>
+<main class="view" data-view="about">
+<section class="page-hero"><div class="container"><div class="kicker">About Us</div><h1>Mengenali TPC dengan lebih dekat.</h1><p>Ringkasan organisasi, latar belakang penubuhan, pengasas, visi, misi, objektif dan perkembangan Temerloh Physiotherapy Centre berdasarkan profil organisasi 2016–2026.</p></div></section>
+<section class="section"><div class="container">
+<div class="about-intro"><div><div class="kicker">Latar belakang</div><h2>Kenapa TPC ditubuhkan?</h2>
+<p>Temerloh Physiotherapy Centre (TPC) ditubuhkan pada <strong>3 Mei 2016</strong> dan merupakan pusat rawatan fisioterapi yang dimiliki 100% Bumiputera. Penubuhan Temerloh Physiotherapy Centre dikaitkan dengan keperluan masyarakat setempat terhadap perkhidmatan fisioterapi dan rehabilitasi yang lebih mudah dicapai.</p>
+<p>Sejak awal, Temerloh Physiotherapy Centre menekankan keberkesanan rawatan, keselesaan pesakit dan keselamatan ketika mendapatkan rawatan. Model perkhidmatan pula meliputi rawatan di pusat dan home visit supaya akses rehabilitasi tidak terhad kepada individu yang boleh hadir ke premis.</p>
+</div>
+<div class="quote"><p>“Menjadi pusat fisioterapi dan rehabilitasi pilihan masyarakat di Pahang dengan menyediakan rawatan yang berkualiti, selamat, berkesan dan berorientasikan keperluan pesakit.”</p><strong>— Visi TPC</strong></div></div>
+</div></section>
+<section class="section soft"><div class="container"><div class="section-head"><div class="kicker">Maklumat organisasi</div><h2>Identiti &amp; asas penubuhan</h2></div>
+<div class="grid two">
+<article class="card"><h3>Profil asas</h3><ul class="list"><li><strong>Nama:</strong> Temerloh Physiotherapy Centre (TPC)</li><li><strong>Bidang:</strong> Fisioterapi, rehabilitasi dan perkhidmatan berkaitan pemulihan</li><li><strong>Tarikh penubuhan:</strong> 3 Mei 2016</li><li><strong>Status pemilikan:</strong> 100% Bumiputera</li><li><strong>No. pendaftaran:</strong> (CT0040700-V)</li><li><strong>Cawangan:</strong> Temerloh</li><li><strong>Lokasi:</strong> No. 14, Jalan Bahagia Makmur 8/2, Taman Bahagia Makmur, 28000 Temerloh, Pahang</li><li><strong>Email:</strong> temerlohphysiotherapycentre@gmail.com</li></ul></article>
+<article class="card"><h3>Siapa pengasas?</h3><p>TPC telah diasaskan oleh <strong>Jalaludin bin Dolah</strong> dan <strong>Wan Hasmini binti Wan Salleh</strong> pada 3 Mei 2016. Kedua-dua pengasas merupakan individu yang bertanggungjawab dalam menubuhkan dan membangunkan TPC sebagai pusat perkhidmatan fisioterapi dan rehabilitasi di Temerloh, Pahang.</p><p style="margin-top:15px">Penubuhan ini mencerminkan usaha menyediakan perkhidmatan pemulihan yang berkualiti serta memenuhi keperluan masyarakat setempat.</p></article>
+</div></div></section>
+<section class="section"><div class="container"><div class="section-head"><div class="kicker">Visi • Misi • Objektif</div><h2>Arah dan tujuan organisasi</h2></div>
+<div class="grid three">
+<article class="card"><div class="icon">V</div><h3>Visi</h3><p>Menjadi pusat fisioterapi dan rehabilitasi pilihan masyarakat di Pahang dengan menyediakan rawatan yang berkualiti, selamat, berkesan dan berorientasikan keperluan pesakit.</p></article>
+<article class="card"><div class="icon">M</div><h3>Misi</h3><ol class="list"><li>Memberikan perkhidmatan fisioterapi dan rehabilitasi yang berfokus kepada keperluan setiap pesakit.</li><li>Membantu pesakit meningkatkan pergerakan, fungsi fizikal, kebolehan berdikari dan kualiti hidup.</li><li>Mengutamakan keselamatan, keselesaan dan pengalaman pesakit sepanjang proses rawatan.</li><li>Menyediakan akses kepada rawatan termasuk perkhidmatan home visit apabila diperlukan.</li><li>Menyokong pemulihan melalui penyediaan peralatan perubatan dan rehabilitasi yang bersesuaian.</li></ol></article>
+<article class="card"><div class="icon">O</div><h3>Objektif</h3><ul class="list"><li>Menyediakan rawatan fisioterapi yang sistematik dan berorientasikan hasil pemulihan.</li><li>Membantu pesakit kembali kepada tahap fungsi dan mobiliti yang lebih baik.</li><li>Menyediakan pengurusan kesakitan dan pemulihan bagi masalah musculoskeletal, neurologi dan kecederaan sukan.</li><li>Memperluas akses kepada perkhidmatan rehabilitasi melalui home visit dan operasi lebih daripada satu lokasi.</li><li>Membina kepercayaan masyarakat melalui perkhidmatan yang profesional, selamat dan berpatutan.</li><li>Menyokong kesinambungan penjagaan pesakit melalui pendidikan, latihan dan penggunaan peralatan rehabilitasi yang sesuai.</li></ul></article>
+</div></div></section>
+<section class="section soft"><div class="container"><div class="section-head"><div class="kicker">Timeline</div><h2>Garis masa perkembangan TPC</h2></div>
+<div class="timeline">
+<div class="timeline-item"><div class="date">3 Mei 2016</div><h3>Penubuhan TPC</h3><p>Temerloh Physiotherapy Centre (TPC) ditubuhkan dan dimiliki 100% Bumiputera.</p></div>
+<div class="timeline-item"><div class="date">2016 – seterusnya</div><h3>Pembinaan perkhidmatan</h3><p>TPC menyediakan rawatan fisioterapi dan rehabilitasi yang merangkumi pengurusan sakit, latihan terapeutik, rehabilitasi neurologi, musculoskeletal, kecederaan sukan dan lain-lain.</p></div>
+<div class="timeline-item"><div class="date">Tarikh tidak dinyatakan</div><h3>Perkembangan kepada dua cawangan</h3><p>TPC mempunyai dua cawangan, iaitu Temerloh dan Daerah Bera. Tarikh pembukaan cawangan Bera tidak dinyatakan dalam rekod awam yang ditemui.</p></div>
+<div class="timeline-item"><div class="date">Tarikh tidak dinyatakan</div><h3>Penutupan Cawangan Daerah Bera</h3><p>TPC telah memuat langkah drastik untuk menutup cawangan daerah Bera atas sebab kurangnya sasaran pesakit dan juga tenaga kerja.</p></div>
+<div class="timeline-item"><div class="date">Kini</div><h3>Status Kini</h3><p>TPC kini menerima membuat rawatan dengan pergi rumah ke rumah (Home Visit).</p></div>
+</div></div></section>
+<section class="section"><div class="container"><div class="section-head"><div class="kicker">Skop perkhidmatan</div><h2>Apa yang ditawarkan?</h2><p>Antara perkhidmatan fisioterapi yang disenaraikan dalam profil:</p></div>
+<div class="grid three">
+<article class="card"><h3>Therapeutic Exercise</h3><p>Perkhidmatan dalam skop fisioterapi dan rehabilitasi TPC.</p></article><article class="card"><h3>Pain Management</h3><p>Perkhidmatan dalam skop fisioterapi dan rehabilitasi TPC.</p></article><article class="card"><h3>Electrical Modalities</h3><p>Perkhidmatan dalam skop fisioterapi dan rehabilitasi TPC.</p></article><article class="card"><h3>Ice Pack / Hot Pack</h3><p>Perkhidmatan dalam skop fisioterapi dan rehabilitasi TPC.</p></article><article class="card"><h3>Tapping</h3><p>Perkhidmatan dalam skop fisioterapi dan rehabilitasi TPC.</p></article><article class="card"><h3>Sport Injury Management</h3><p>Perkhidmatan dalam skop fisioterapi dan rehabilitasi TPC.</p></article><article class="card"><h3>Ambulation</h3><p>Perkhidmatan dalam skop fisioterapi dan rehabilitasi TPC.</p></article><article class="card"><h3>Gait Training</h3><p>Perkhidmatan dalam skop fisioterapi dan rehabilitasi TPC.</p></article><article class="card"><h3>Hand Rehabilitation</h3><p>Perkhidmatan dalam skop fisioterapi dan rehabilitasi TPC.</p></article><article class="card"><h3>Neuro Rehabilitation</h3><p>Perkhidmatan dalam skop fisioterapi dan rehabilitasi TPC.</p></article><article class="card"><h3>Burn Rehabilitation</h3><p>Perkhidmatan dalam skop fisioterapi dan rehabilitasi TPC.</p></article><article class="card"><h3>Spinal Rehabilitation</h3><p>Perkhidmatan dalam skop fisioterapi dan rehabilitasi TPC.</p></article><article class="card"><h3>Amputee Rehabilitation</h3><p>Perkhidmatan dalam skop fisioterapi dan rehabilitasi TPC.</p></article><article class="card"><h3>Home Visit</h3><p>Perkhidmatan dalam skop fisioterapi dan rehabilitasi TPC.</p></article>
+</div><div class="card" style="margin-top:22px"><h3>Keadaan / masalah yang disebut</h3><p>Strok, patah tulang selepas pembedahan, sakit leher, bahu dan belakang, PID, tennis/golfer elbow, carpal tunnel syndrome, trigger finger, osteoarthritis, ankle sprain, plantar fasciitis dan kecederaan sukan.</p></div>
+</div></section>
+</main>
+<main class="view" data-view="gallery"><section class="page-hero"><div class="container"><div class="kicker">Gallery</div><h1>Aktiviti &amp; rawatan TPC.</h1><p>Koleksi gambar rawatan dan promosi. Tekan mana-mana gambar untuk membuka preview dan slide ke gambar seterusnya.</p></div></section>
+<section class="section"><div class="container"><div class="gallery-grid"><button aria-label="Buka gambar rawatan" class="gallery-item"><img alt="Gambar rawatan TPC" src="assets/rawatan/510403275_10046086162107886_2781992413205960055_n.jpg"/><span class="tag">Rawatan</span></button><button aria-label="Buka gambar rawatan" class="gallery-item"><img alt="Gambar rawatan TPC" src="assets/rawatan/511194736_10046085848774584_1730816810134494993_n.jpg"/><span class="tag">Rawatan</span></button><button aria-label="Buka gambar rawatan" class="gallery-item"><img alt="Gambar rawatan TPC" src="assets/rawatan/511307496_10059841260732376_9049811842972159095_n.jpg"/><span class="tag">Rawatan</span></button><button aria-label="Buka gambar rawatan" class="gallery-item"><img alt="Gambar rawatan TPC" src="assets/rawatan/512174256_10048316555218180_4013995129703564226_n.jpg"/><span class="tag">Rawatan</span></button><button aria-label="Buka gambar rawatan" class="gallery-item"><img alt="Gambar rawatan TPC" src="assets/rawatan/512558428_10059841294065706_4417200922916871392_n.jpg"/><span class="tag">Rawatan</span></button><button aria-label="Buka gambar rawatan" class="gallery-item"><img alt="Gambar rawatan TPC" src="assets/rawatan/512640722_10057279760988526_2784250271222986956_n.jpg"/><span class="tag">Rawatan</span></button><button aria-label="Buka gambar promosi" class="gallery-item"><img alt="Gambar promosi TPC" src="assets/promotion/510979028_10047194758663693_2333601577600703565_n.jpg"/><span class="tag">Promotion</span></button><button aria-label="Buka gambar promosi" class="gallery-item"><img alt="Gambar promosi TPC" src="assets/promotion/512291030_10047196245330211_3268875042788217892_n.jpg"/><span class="tag">Promotion</span></button></div></div></section></main>
+<main class="view" data-view="pricing"><section class="page-hero"><div class="container"><div class="kicker">Pricing</div><h1>Pakej rawatan.</h1><p>Senarai harga yang diberikan untuk memudahkan pengguna melihat pilihan rawatan dengan cepat.</p></div></section>
+<section class="section"><div class="container"><div class="price-layout"><div class="price-image"><img alt="Senarai pakej harga TPC" src="assets/pricing.png"/></div>
+<div><div class="section-head"><div class="kicker">Pilihan pakej</div><h2>Ringkas, jelas &amp; mudah dirujuk.</h2><p>Harga yang dipaparkan berdasarkan bahan harga yang diberikan. Sila hubungi TPC jika memerlukan maklumat lanjut.</p></div>
+<div class="price-list"><div class="price-row"><div><strong>PAKEJ 1</strong><div class="small">Rawatan di Centre</div></div><div class="price">RM 80.00</div></div>
+<div class="price-row"><div><strong>PAKEJ B</strong><div class="small">Home Visit</div></div><div class="price">RM 100.00</div></div></div>
+</div></div></div></section></main>
+<main class="view" data-view="contact"><section class="page-hero"><div class="container"><div class="kicker">Contact Us</div><h1>Hubungi TPC.</h1><p>Tekan kad ahli untuk melihat maklumat lanjut dan gunakan butang WhatsApp untuk berhubung secara terus.</p></div></section>
+<section class="section"><div class="container"><div class="contact-grid">
+<article aria-expanded="false" class="card contact-card" tabindex="0"><div class="arrow">↗</div>
+<img alt="Wan Hasmini" class="team-photo" src="assets/contact us/wan.png" style="margin-bottom:18px"/>
+<div class="hint">Click for more information</div><h3>PN. Wan</h3><p class="contact-full-name">Wan Hasmini binti Wan Salleh</p>
+<div class="contact-details"><p class="member-role-source"><strong>Jawatan:</strong> Perawat</p><p><a class="btn" href="https://wa.me/60199743014" rel="noopener" target="_blank">WhatsApp ↗</a></p></div></article>
+<article aria-expanded="false" class="card contact-card" tabindex="0"><div class="arrow">↗</div>
+<img alt="Jalaludin" class="team-photo" src="assets/contact us/jalal.png" style="margin-bottom:18px"/>
+<div class="hint">Click for more information</div><h3>En. Jalal</h3><p class="contact-full-name">Jalaludin bin Dolah</p>
+<div class="contact-details"><p class="member-role-source"><strong>Jawatan:</strong> Pembantu Perawat</p><p><a class="btn" href="https://wa.me/60193698182" rel="noopener" target="_blank">WhatsApp ↗</a></p></div></article>
+</div>
+<div class="grid two" style="margin-top:22px"><article class="card"><div class="kicker">Lokasi</div><h3>Temerloh, Pahang</h3><p>No. 14, Jalan Bahagia Makmur 8/2, Taman Bahagia Makmur, 28000 Temerloh, Pahang</p></article>
+<article class="card"><div class="kicker">Email</div><h3>Temerloh Physiotherapy Centre</h3><p><a href="mailto:temerlohphysiotherapycentre@gmail.com" style="color:var(--blue);font-weight:750">temerlohphysiotherapycentre@gmail.com</a></p><p class="small" style="margin-top:14px">No. pendaftaran: (CT0040700-V)</p></article></div>
+</div></section></main>
+<main class="not-found view" data-view="404"><div class="container"><div class="code">404</div><h1>Halaman tidak dijumpai.</h1><p>Halaman yang anda cari mungkin telah dibuang, dipindahkan atau alamatnya tidak lagi tersedia.</p><a class="btn" data-view-link="home" href="#home">Kembali ke halaman utama</a></div></main>
+</div>
+
+<div class="modal" id="galleryModal" role="dialog" aria-modal="true" aria-label="Preview gambar">
+  <div class="modal-inner">
+    <button class="modal-close" type="button" aria-label="Tutup">×</button>
+    <img src="" alt="">
+    <div class="modal-nav">
+      <button class="modal-prev" type="button" aria-label="Gambar sebelumnya">‹</button>
+      <button class="modal-next" type="button" aria-label="Gambar seterusnya">›</button>
+    </div>
+  </div>
+</div>
+
+<div class="contact-modal" id="memberModal" aria-hidden="true" aria-label="Maklumat ahli">
+  <div class="member-dialog" role="dialog" aria-modal="true" aria-labelledby="memberDialogTitle">
+    <button class="member-close" type="button" aria-label="Tutup">×</button>
+    <div class="member-dialog-head">
+      <img class="team-photo" data-member-photo src="" alt="">
+      <div>
+        <div class="kicker">Maklumat ahli</div>
+        <h2 id="memberDialogTitle" data-member-name style="margin:4px 0 0;color:var(--navy)"></h2>
+        <p class="small" data-member-full-name style="margin:2px 0 0"></p>
+        <p class="member-role" data-member-role></p>
+      </div>
+    </div>
+    <div class="member-info">
+      <p><strong>Telefon:</strong> <span data-member-phone></span></p>
+      <a class="wa-btn" data-member-whatsapp href="#" target="_blank" rel="noopener">WhatsApp ↗</a>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div>© 2016 <strong>TEMERLOH PHYSIOTHERAPY CENTRE</strong></div>
+    <div class="signature">@~hrsyhm <span>as designer web / developer / maintener</span></div>
+  </div>
+</footer>
+
+<div class="install-card" aria-live="polite">
+  <img src="assets/logo.png" alt="TPC">
+  <div class="content">
+    <h4>Pasang TPC di Home Screen</h4>
+    <p>Tambah laman ini ke Home Screen untuk akses lebih pantas seperti aplikasi.</p>
+    <div class="install-actions">
+      <button class="install" type="button">Add to Home</button>
+      <button class="dismiss" type="button">Tutup</button>
+    </div>
+    <p class="install-help" hidden>Jika butang pemasangan tidak muncul, gunakan menu Share/Browser dan pilih <strong>Add to Home Screen</strong>.</p>
+  </div>
+</div>
+
+<script>
+(() => {
+  const routes = {
+    home: { title: 'Selamat Datang | TPC' },
+    about: { title: 'About Us | TPC' },
+    gallery: { title: 'Gallery | TPC' },
+    pricing: { title: 'Pricing | TPC' },
+    contact: { title: 'Contact Us | TPC' },
+    '404': { title: 'Page Not Found | TPC' }
+  };
+
+  let current = 'home';
+  let galleryItems = [];
+  let galleryIndex = 0;
+
+  const views = () => [...document.querySelectorAll('.view')];
+
+  function closeMenu() {
+    const nav = document.querySelector('.nav-links');
+    const menu = document.querySelector('.menu-btn');
+    nav?.classList.remove('open');
+    menu?.setAttribute('aria-expanded', 'false');
+  }
+
+  function setTheme(theme) {
+    const safe = theme === 'dark' ? 'dark' : 'light';
+    document.documentElement.dataset.theme = safe;
+    sessionStorage.setItem('tpcTheme', safe);
+    const toggle = document.querySelector('.theme-toggle');
+    const icon = document.querySelector('.theme-icon');
+    const label = document.querySelector('.theme-label');
+    if (toggle) {
+      toggle.setAttribute('aria-label', safe === 'dark' ? 'Tukar ke mod terang' : 'Tukar ke mod gelap');
+      toggle.setAttribute('aria-pressed', safe === 'dark' ? 'true' : 'false');
+    }
+    if (icon) icon.textContent = safe === 'dark' ? '☀' : '☾';
+    if (label) label.textContent = safe === 'dark' ? 'Light' : 'Dark';
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.content = safe === 'dark' ? '#0b0809' : '#063b69';
+  }
+
+  function bindTheme() {
+    const toggle = document.querySelector('.theme-toggle');
+    if (!toggle || toggle.dataset.bound === '1') return;
+    toggle.dataset.bound = '1';
+    setTheme(sessionStorage.getItem('tpcTheme') || 'light');
+    toggle.addEventListener('click', () => {
+      setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+    });
+  }
+
+  function showLoader() {
+    const loader = document.querySelector('.loader');
+    loader?.classList.remove('hide');
+    document.body.classList.add('loading');
+  }
+
+  function hideLoader() {
+    const loader = document.querySelector('.loader');
+    if (!loader) return;
+    setTimeout(() => {
+      loader.classList.add('hide');
+      document.body.classList.remove('loading');
+    }, 450);
+  }
+
+  function setActive(route) {
+    document.querySelectorAll('.nav-links a[data-route]').forEach(a => {
+      a.classList.toggle('active', a.dataset.route === route);
+    });
+  }
+
+  function closeOpenModals() {
+    document.querySelector('#galleryModal')?.classList.remove('open');
+    const member = document.querySelector('#memberModal');
+    if (member) {
+      member.classList.remove('open');
+      member.setAttribute('aria-hidden','true');
+    }
+  }
+
+  function showView(name, useLoader = false) {
+    const target = routes[name] ? name : '404';
+    if (useLoader) showLoader();
+    closeOpenModals();
+    views().forEach(v => v.classList.toggle('active', v.dataset.view === target));
+    current = target;
+    document.title = routes[target].title;
+    setActive(target);
+    closeMenu();
+    bindGallery();
+    bindContacts();
+    if (useLoader) hideLoader();
+  }
+
+  function navigate(route) {
+    const target = routes[route] ? route : '404';
+    showView(target);
+    if (location.hash !== '#' + target) {
+      if (history.replaceState) history.replaceState({route: target}, '', '#' + target);
+      else location.hash = target;
+    }
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }));
+    });
+  }
+
+  function bindNavigation() {
+    document.querySelectorAll('[data-view-link]').forEach(el => {
+      if (el.dataset.navBound === '1') return;
+      el.dataset.navBound = '1';
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        navigate(el.dataset.viewLink);
+      });
+    });
+    document.querySelectorAll('.brand[data-route-home], .nav-links a[data-route], .not-found [data-view-link]').forEach(el => {
+      if (el.dataset.navBound === '1') return;
+      el.dataset.navBound = '1';
+      el.addEventListener('click', e => {
+        const route = el.dataset.route || 'home';
+        if (el.dataset.viewLink) e.preventDefault();
+        if (el.tagName === 'A') e.preventDefault();
+        navigate(route);
+      });
+    });
+  }
+
+  function bindMenu() {
+    const menu = document.querySelector('.menu-btn');
+    const nav = document.querySelector('.nav-links');
+    if (!menu || menu.dataset.bound === '1') return;
+    menu.dataset.bound = '1';
+    menu.addEventListener('click', () => {
+      nav?.classList.toggle('open');
+      menu.setAttribute('aria-expanded', nav?.classList.contains('open') ? 'true' : 'false');
+    });
+  }
+
+  function bindGallery() {
+    const modal = document.querySelector('#galleryModal');
+    if (!modal) return;
+    galleryItems = [...document.querySelectorAll('.view[data-view="gallery"] .gallery-item')];
+    const img = modal.querySelector('img');
+    if (!galleryItems.length || modal.dataset.bound === '1') return;
+    modal.dataset.bound = '1';
+
+    const open = i => {
+      galleryIndex = (i + galleryItems.length) % galleryItems.length;
+      const source = galleryItems[galleryIndex].querySelector('img');
+      img.src = source.src;
+      img.alt = source.alt;
+      modal.classList.add('open');
+    };
+    const close = () => {
+      modal.classList.remove('open');
+      img.removeAttribute('src');
+    };
+
+    galleryItems.forEach((item,i) => item.addEventListener('click', e => {
+      e.preventDefault();
+      open(i);
+    }));
+    modal.querySelector('.modal-close')?.addEventListener('click', close);
+    modal.querySelector('.modal-prev')?.addEventListener('click', e => { e.stopPropagation(); open(galleryIndex - 1); });
+    modal.querySelector('.modal-next')?.addEventListener('click', e => { e.stopPropagation(); open(galleryIndex + 1); });
+    modal.addEventListener('click', e => { if (e.target === modal) close(); });
+    modal._close = close;
+  }
+
+  function bindContacts() {
+    const modal = document.querySelector('#memberModal');
+    if (!modal) return;
+    const cards = [...document.querySelectorAll('.view[data-view="contact"] .contact-card')];
+    if (modal.dataset.bound === '1') return;
+    modal.dataset.bound = '1';
+
+    const photo = modal.querySelector('[data-member-photo]');
+    const name = modal.querySelector('[data-member-name]');
+    const role = modal.querySelector('[data-member-role]');
+    const phone = modal.querySelector('[data-member-phone]');
+    const whatsapp = modal.querySelector('[data-member-whatsapp]');
+
+    const close = () => {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      photo.removeAttribute('src');
+    };
+
+    const open = card => {
+      const src = card.querySelector('.team-photo');
+      const personName = card.querySelector('h3')?.textContent.trim() || '';
+      const fullName = card.querySelector('.contact-full-name')?.textContent.trim() || '';
+      const roleNode = card.querySelector('.contact-details .member-role-source');
+      const tel = card.querySelector('a[href^="tel:"]');
+      const wa = card.querySelector('a[href^="https://wa.me/"]');
+
+      photo.src = src.src;
+      photo.alt = src.alt;
+      name.textContent = personName;
+      modal.querySelector('[data-member-full-name]').textContent = fullName;
+      role.textContent = roleNode ? roleNode.textContent.trim() : '';
+      phone.textContent = tel ? tel.textContent.trim() : '';
+      whatsapp.href = wa ? wa.href : '#';
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+    };
+
+    cards.forEach(card => {
+      card.addEventListener('click', e => {
+        if (e.target.closest('a')) return;
+        open(card);
+      });
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          open(card);
+        }
+      });
+    });
+
+    modal.querySelector('.member-close')?.addEventListener('click', close);
+    modal.addEventListener('click', e => { if (e.target === modal) close(); });
+    modal._close = close;
+  }
+
+  function bindInstallCard() {
+    const card = document.querySelector('.install-card');
+    if (!card || card.dataset.bound === '1') return;
+    card.dataset.bound = '1';
+
+    const mobile = window.matchMedia('(max-width: 850px)').matches;
+    if (!mobile || sessionStorage.getItem('tpcInstallDismissed')) return;
+
+    let deferredPrompt = null;
+    window.addEventListener('beforeinstallprompt', e => {
+      e.preventDefault();
+      deferredPrompt = e;
+    });
+
+    setTimeout(() => {
+      if (window.matchMedia('(max-width: 850px)').matches && !sessionStorage.getItem('tpcInstallDismissed')) {
+        card.classList.add('show');
+      }
+    }, 1800);
+
+    card.querySelector('.dismiss')?.addEventListener('click', () => {
+      sessionStorage.setItem('tpcInstallDismissed','1');
+      card.classList.remove('show');
+    });
+
+    card.querySelector('.install')?.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        card.classList.remove('show');
+        sessionStorage.setItem('tpcInstallDismissed','1');
+      } else {
+        const help = card.querySelector('.install-help');
+        if (help) help.hidden = !help.hidden;
+      }
+    });
+  }
+
+  document.addEventListener('keydown', e => {
+    const gallery = document.querySelector('#galleryModal');
+    if (gallery?.classList.contains('open')) {
+      if (e.key === 'Escape') gallery._close?.();
+      if (e.key === 'ArrowLeft') gallery.querySelector('.modal-prev')?.click();
+      if (e.key === 'ArrowRight') gallery.querySelector('.modal-next')?.click();
+      return;
+    }
+    const member = document.querySelector('#memberModal');
+    if (member?.classList.contains('open') && e.key === 'Escape') member._close?.();
+  });
+
+  window.addEventListener('load', () => {
+    setTheme(sessionStorage.getItem('tpcTheme') || 'light');
+    bindTheme();
+    bindMenu();
+    bindNavigation();
+    bindGallery();
+    bindContacts();
+    bindInstallCard();
+
+    const hash = location.hash.replace('#','').trim();
+    const path = location.pathname.replace(/\/+$/, '') || '/';
+    const isRootPath = path === '/' || path.endsWith('/index.html');
+    let initial;
+
+    if (hash) {
+      initial = routes[hash] ? hash : '404';
+    } else if (isRootPath) {
+      initial = 'home';
+    } else {
+      initial = '404';
+    }
+
+    showView(initial);
+    hideLoader();
+    requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }));
+  });
+
+  window.addEventListener('hashchange', () => {
+    const hash = location.hash.replace('#','').trim();
+    const target = hash ? (routes[hash] ? hash : '404') : 'home';
+    showView(target);
+    requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }));
+  });
+})();
+</script>
+</body>
+</html>
