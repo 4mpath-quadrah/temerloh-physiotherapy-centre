@@ -1,0 +1,14 @@
+{
+  "name":"Temerloh Physiotherapy Centre",
+  "short_name":"TPC",
+  "start_url":"./index.html",
+  "scope":"./",
+  "display":"standalone",
+  "background_color":"#f6fbff",
+  "theme_color":"#063b69",
+  "description":"Temerloh Physiotherapy Centre — fisioterapi dan rehabilitasi.",
+  "icons":[
+    {"src":"assets/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"assets/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}
